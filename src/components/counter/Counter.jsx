@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
-import * as types from '../constants/actionTypes';
+import * as types from '../../constants/actionTypes';
 import {Provider, connect} from 'react-redux';
-import {increment, decrement} from '../actions/counterActions';
+import {increment, decrement} from '../../actions/counterActions';
 
 class Counter extends React.Component {
 

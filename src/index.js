@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App.jsx';
+import App from './containers/app/App.jsx';
 import {Provider, connect} from 'react-redux';
 import appStore from './store/appStore';
 

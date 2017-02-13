@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 import {Provider, connect} from 'react-redux';
-import Counter from '../components/Counter.jsx';
+import Counter from '../../components/counter/Counter.jsx';
 
 class App extends React.Component {
 
