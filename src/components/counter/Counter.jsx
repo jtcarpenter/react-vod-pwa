@@ -3,7 +3,7 @@ import * as types from '../../constants/actionTypes';
 import {Provider, connect} from 'react-redux';
 import {increment, decrement} from '../../actions/counterActions';
 
-class Counter extends React.Component {
+export class Counter extends React.Component {
 
     constructor() {
         super();
