@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 const style = {
     width: '100px',
@@ -16,13 +17,15 @@ export const GridRow = ({item, handleSelect}) => {
     }
 
     return (
-        <div
-            style={style}
-            id={item.id}
-            onClick={handleClick}
-        >
-            {item.title}
-        </div>
+        <Link to={'/player' + item.id}>
+            <div
+                style={style}
+                id={item.id}
+                onClick={handleClick}
+            >
+                {item.title}
+            </div>
+        </Link>
     )
 }
 

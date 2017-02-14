@@ -2,6 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import {Provider, connect} from 'react-redux';
 import Counter from '../../components/counter/Counter.jsx';
 import Grid from '../../components/grid/Grid.jsx';
+import Player from '../../components/player/Player.jsx';
 
 let data = {
     items: []
@@ -20,6 +21,7 @@ export class App extends React.Component {
             <div>
                 <Counter></Counter>
                 <Grid cols="3" data={data}></Grid>
+                <Player></Player>
             </div>
         )
     }

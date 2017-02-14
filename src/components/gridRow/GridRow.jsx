@@ -3,7 +3,7 @@ import GridItem from '../gridItem/GridItem.jsx';
 
 const style = {
     width: '330px',
-    height: '115px',
+    height: '110px',
     margin: '5px',
     border: '1px dashed #666'
 }
