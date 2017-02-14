@@ -13,11 +13,13 @@ export class Counter extends React.Component {
 
     render() {
         const {counter} = this.props;
-        return <div>
-            counter: {counter}
-            <button onClick={this.increment}>+</button>
-            <button onClick={this.decrement}>-</button>
-        </div>
+        return (
+            <div>
+                counter: {counter}
+                <button onClick={this.increment}>+</button>
+                <button onClick={this.decrement}>-</button>
+            </div>
+        )
     }
 
     increment() {
