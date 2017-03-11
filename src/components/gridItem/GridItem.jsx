@@ -17,7 +17,7 @@ export const GridRow = ({item, handleSelect}) => {
     }
 
     return (
-        <Link to={'/player' + item.id}>
+        <Link to={`/player/${item.id}`}>
             <div
                 style={style}
                 id={item.id}

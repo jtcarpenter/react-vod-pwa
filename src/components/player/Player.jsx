@@ -1,14 +1,12 @@
 import React from 'react';
 
-//http://camendesign.co.uk/code/video_for_everybody/test.html
+export const Player = ({data}) => {
 
-export const Player = () => {
-
-    const src = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
     return (
         <div>
+            <span>[playing asset with id: {data.id}]</span>
             <video controls>
-                <source src={src}>
+                <source src={data.src}>
                 </source>
             </video>
         </div>
