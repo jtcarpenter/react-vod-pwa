@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Counter from '../../components/counter/Counter.jsx';
 import Grid from '../../components/grid/Grid.jsx';
 import {load} from '../../actions/gridActions';
 
@@ -18,7 +17,6 @@ export class GridContainer extends Component {
         const {grid} = this.props;
         return (
             <div>
-                <Counter></Counter>
                 <Grid cols="3" data={grid.data} handleSelect={this.handleSelect}></Grid>
             </div>
         )
