@@ -17,7 +17,11 @@ export class GridContainer extends Component {
         const {grid} = this.props;
         return (
             <div>
-                <Grid cols="3" data={grid.data} handleSelect={this.handleSelect}></Grid>
+                <Grid
+                    cols="3"
+                    data={grid.data}
+                    handleSelect={this.handleSelect}
+                ></Grid>
             </div>
         )
     }
@@ -27,10 +31,10 @@ export class GridContainer extends Component {
     }
 
     handleSelect(index) {
-        console.log(index + ' selected');
+        console.log(`${index} selected`);
     }
 }
 
-export default connect((state) =>({
+export default connect((state) => ({
     grid: state.grid
 }))(GridContainer);

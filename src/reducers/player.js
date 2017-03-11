@@ -19,4 +19,4 @@ export default function grid(state = defaultState, action) {
         default:
             return state;
     }
-};
+}

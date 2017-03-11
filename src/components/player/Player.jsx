@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Player = ({data}) => {
-
+export function Player({data}) {
     return (
         <div>
             <span>[playing asset with id: {data.id}]</span>

@@ -1,9 +1,9 @@
 import * as types from '../constants/gridActionTypes';
 
-let data = {
+const data = {
     items: []
 }
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i += 1) {
     data.items.push({
         id: i,
         src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
@@ -11,9 +11,10 @@ for (let i = 0; i < 10; i++) {
     });
 }
 
+// TODO: change to async request action
 export function load() {
     return {
         type: types.LOAD,
-        data: data // TODO: change to async request action
+        data
     };
 }

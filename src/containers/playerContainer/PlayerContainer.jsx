@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Provider, connect} from 'react-redux';
+import {connect} from 'react-redux';
 import Player from '../../components/player/Player.jsx';
 import {load} from '../../actions/playerActions';
 
@@ -27,6 +27,6 @@ export class PlayerContainer extends Component {
     }
 }
 
-export default connect((state) =>({
+export default connect((state) => ({
     player: state.player
 }))(PlayerContainer);

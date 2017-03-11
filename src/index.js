@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GridContainer from './containers/gridContainer/GridContainer.jsx';
 import PlayerContainer from './containers/playerContainer/PlayerContainer.jsx';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
 import appStore from './store/appStore';
 import {Router, Route, browserHistory, hashHistory} from 'react-router';
 

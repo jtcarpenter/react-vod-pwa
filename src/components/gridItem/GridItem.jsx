@@ -10,9 +10,9 @@ const style = {
     float: 'left'
 }
 
-export const GridRow = ({item, handleSelect}) => {
+export function GridRow({item, handleSelect}) {
 
-    function handleClick(event) {
+    function handleClick() {
         handleSelect(item.id);
     }
 

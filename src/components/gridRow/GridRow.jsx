@@ -8,20 +8,17 @@ const style = {
     border: '1px dashed #666'
 }
 
-export const GridRow = ({row, handleSelect}) => {
-
+export function GridRow({row, handleSelect}) {
     return (
         <div style={style}>
-        {row.map((item, index) => {
-            return (
-                <GridItem
-                    key={index}
-                    item={item}
-                    handleSelect={handleSelect}
-                >
-                </GridItem>
-            )
-        })}
+        {row.map((item, index) =>
+            <GridItem
+                key={index}
+                item={item}
+                handleSelect={handleSelect}
+            >
+            </GridItem>
+        )}
         </div>
     )
 }
