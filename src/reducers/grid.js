@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from '../constants/gridActionTypes';
 
 const defaultState = {
     data: {
@@ -8,7 +8,7 @@ const defaultState = {
 
 export default function grid(state = defaultState, action) {
     switch (action.type) {
-        case types.LOAD_GRID_DATA:
+        case types.LOAD:
             return Object.assign({}, state, {
                 data: action.data
             });

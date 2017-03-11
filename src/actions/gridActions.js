@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from '../constants/gridActionTypes';
 
 let data = {
     items: []
@@ -13,7 +13,7 @@ for (let i = 0; i < 10; i++) {
 
 export function load() {
     return {
-        type: types.LOAD_GRID_DATA,
+        type: types.LOAD,
         data: data // TODO: change to async request action
     };
 }

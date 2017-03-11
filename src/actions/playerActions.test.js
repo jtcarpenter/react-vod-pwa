@@ -1,5 +1,5 @@
 import * as actions from './playerActions'
-import * as types from '../constants/ActionTypes'
+import * as types from '../constants/playerActionTypes'
 
 describe('actions', () => {
     it('should create an action to increment counter', () => {

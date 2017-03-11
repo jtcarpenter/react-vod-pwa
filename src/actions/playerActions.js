@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from '../constants/playerActionTypes';
 
 let data = {
     id: null,
@@ -7,7 +7,7 @@ let data = {
 
 export function load(opts) {
     return {
-        type: types.LOAD_VIDEO_DATA,
+        type: types.LOAD,
         data: Object.assign({}, data, { // TODO: change to async request action
             id: opts.id
         })

@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from '../constants/counterActionTypes';
 
 export default function counter(state = 0, action) {
     switch (action.type) {

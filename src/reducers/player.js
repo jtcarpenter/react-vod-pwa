@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from '../constants/playerActionTypes';
 
 const defaultState = {
     data: {
@@ -9,7 +9,7 @@ const defaultState = {
 
 export default function grid(state = defaultState, action) {
     switch (action.type) {
-        case types.LOAD_VIDEO_DATA:
+        case types.LOAD:
             return Object.assign({}, state, {
                 data: {
                     id: action.data.id,
