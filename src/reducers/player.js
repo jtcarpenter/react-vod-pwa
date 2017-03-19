@@ -9,7 +9,7 @@ const defaultState = {
 
 export default function grid(state = defaultState, action) {
     switch (action.type) {
-        case types.LOAD:
+        case types.LOADED:
             return Object.assign({}, state, {
                 data: {
                     id: action.data.id,

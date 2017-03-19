@@ -1,8 +1,8 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
-import * as types from '../constants/gridActionTypes';
+import * as types from '../constants/playerActionTypes';
 
-const GRID_DATA_URL = '/grid-data.json';
-const request = () => fetch(GRID_DATA_URL)
+const PLAYER_DATA_URL = '/item-data';
+const request = (opts) => fetch(`${PLAYER_DATA_URL}-${opts.id}.json`)
     .then((response) => {
         if (response.status / 100 !== 2) {
             return {error: 'error'};
@@ -15,8 +15,8 @@ const request = () => fetch(GRID_DATA_URL)
     })
 
 // Our worker Saga: will perform the async task
-export function *loaded() {
-    const data = yield call(request, {});
+export function *loaded(opts) {
+    const data = yield call(request, opts.data);
     if (data.error) {
         // TODO: handle error
     }

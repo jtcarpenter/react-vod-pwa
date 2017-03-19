@@ -1,12 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export function Player({data}) {
     return (
         <div>
             <span>[playing asset with id: {data.id}]</span>
-            <video controls>
-                <source src={data.src}>
-                </source>
+            <Link to={'/'}>[&#9668; BACK]</Link>
+            <video controls src={data.src}>
             </video>
         </div>
     )
