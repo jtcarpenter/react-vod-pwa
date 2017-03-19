@@ -36,5 +36,5 @@ export class GridContainer extends Component {
 }
 
 export default connect((state) => ({
-    grid: state.grid
+    grid: state.gridReducer
 }))(GridContainer);

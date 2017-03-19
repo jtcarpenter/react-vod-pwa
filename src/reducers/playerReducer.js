@@ -7,7 +7,7 @@ const defaultState = {
     }
 }
 
-export default function grid(state = defaultState, action) {
+export default function playerReducer(state = defaultState, action) {
     switch (action.type) {
         case types.LOADED:
             return Object.assign({}, state, {

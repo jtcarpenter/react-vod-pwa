@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import grid from './grid'
-import player from './player'
+import gridReducer from './gridReducer'
+import playerReducer from './playerReducer'
 
 export default combineReducers({
-    grid,
-    player
+    gridReducer,
+    playerReducer
 });

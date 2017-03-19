@@ -28,5 +28,5 @@ export class PlayerContainer extends Component {
 }
 
 export default connect((state) => ({
-    player: state.player
+    player: state.playerReducer
 }))(PlayerContainer);
