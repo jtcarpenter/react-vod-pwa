@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "id": 0,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_0"
+    },
+    {
+      "id": 1,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_1"
+    },
+    {
+      "id": 2,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_2"
+    },
+    {
+      "id": 3,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_3"
+    },
+    {
+      "id": 4,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_4"
+    },
+    {
+      "id": 5,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_5"
+    },
+    {
+      "id": 6,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_6"
+    },
+    {
+      "id": 7,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_7"
+    },
+    {
+      "id": 8,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_8"
+    },
+    {
+      "id": 9,
+      "src": "http:\/\/clips.vorwaerts-gmbh.de\/big_buck_bunny.mp4",
+      "title": "item_9"
+    }
+  ]
+}
