@@ -10,7 +10,7 @@ const style = {
     float: 'left'
 }
 
-export function GridRow({item, handleSelect}) {
+export function GridItem({item, handleSelect}) {
 
     function handleClick() {
         handleSelect(item.id);
@@ -29,4 +29,4 @@ export function GridRow({item, handleSelect}) {
     )
 }
 
-export default GridRow;
+export default GridItem;

@@ -2,10 +2,19 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {PlayerContainer} from './PlayerContainer';
 
-test('PlayerContainer', () => {
-    const playerContainer = shallow(
-      <PlayerContainer></PlayerContainer>
-    );
+const playerData = {data: {id: 1}};
+const mockDispatch = () => ({});
+const playerContainer = (
+    <PlayerContainer
+        dispatch={mockDispatch}
+        player={playerData}
+    >
+    </PlayerContainer>
+);
 
-    expect(playerContainer.exists()).toBe(true);
-});
+describe('PlayerContainer', () => {
+    it('should render', () => {
+        const wrapper = shallow(playerContainer);
+        expect(wrapper.exists()).toBe(true);
+    })
+})

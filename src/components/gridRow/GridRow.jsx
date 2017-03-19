@@ -11,14 +11,14 @@ const style = {
 export function GridRow({row, handleSelect}) {
     return (
         <div style={style}>
-        {row.map((item, index) =>
-            <GridItem
-                key={index}
-                item={item}
-                handleSelect={handleSelect}
-            >
-            </GridItem>
-        )}
+            {row.map((item, index) =>
+                <GridItem
+                    key={index}
+                    item={item}
+                    handleSelect={handleSelect}
+                >
+                </GridItem>
+            )}
         </div>
     )
 }
