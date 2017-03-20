@@ -1,29 +1,15 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
-import * as types from '../constants/gridActionTypes';
-
-const GRID_DATA_URL = '/grid-data.json';
-const request = () => fetch(GRID_DATA_URL)
-    .then((response) => {
-        if (response.status / 100 !== 2) {
-            return {error: 'error'};
-        }
-        return response.json()
-            .then((data) => data);
-    })
-    .catch((error) => {
-        throw error;
-    })
+import * as types from '../constants/gridActionTypes'
+import * as actions from '../actions/gridActions'
+import {api} from '../services/api'
 
 // Our worker Saga: will perform the async task
 export function *loaded() {
-    const data = yield call(request, {});
+    const data = yield call(api.grid.get);
     if (data.error) {
         // TODO: handle error
     }
-    yield put({
-        type: types.LOADED,
-        data
-    })
+    yield put(actions.loaded(data));
 }
 
 // Our watcher Saga: spawn a new loaded task on each LOAD

@@ -5,3 +5,10 @@ export function load() {
         type: types.LOAD
     };
 }
+
+export function loaded(data) {
+    return {
+        type: types.LOADED,
+        data
+    }
+}

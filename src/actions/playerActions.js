@@ -6,3 +6,10 @@ export function load(opts) {
         data: opts
     };
 }
+
+export function loaded(data) {
+    return {
+        type: types.LOADED,
+        data
+    }
+}
