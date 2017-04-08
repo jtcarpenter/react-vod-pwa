@@ -1,24 +1,16 @@
 import React from 'react';
-import GridRow from '../gridRow/GridRow.jsx';
+import GridItem from '../gridItem/GridItem.jsx';
 
-export function Grid({cols, data = {items: []}, handleSelect}) {
-    const rows = [];
-    data.items.forEach((item, index) => {
-        if (index % cols === 0) {
-            rows.push([item]);
-        } else {
-            rows[rows.length - 1].push(item);
-        }
-    });
+export function Grid({data = {items: []}, handleSelect}) {
     return (
         <div className="grid">
-            {rows.map((row, index) =>
-                <GridRow
+            {data.items.map((item, index) =>
+                <GridItem
                     key={index}
-                    row={row}
+                    item={item}
                     handleSelect={handleSelect}
                 >
-                </GridRow>
+                </GridItem>
             )}
         </div>
     )

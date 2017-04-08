@@ -18,7 +18,6 @@ export class GridContainer extends Component {
         return (
             <div>
                 <Grid
-                    cols="3"
                     data={grid.data}
                     handleSelect={this.handleSelect}
                 ></Grid>

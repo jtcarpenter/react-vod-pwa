@@ -1,16 +1,51 @@
+$BREAKPOINT_S: 420px;
+$BREAKPOINT_M: 720px;
+$BREAKPOINT_L: 900px;
+$BREAKPOINT_XL: 1080px;
 
-.grid-row {
-    width: 330px;
-    height: 110px;
-    margin: 5px;
-    border: 1px dashed #666;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin gridLayout($cols, $gap, $padding) {
+    display: grid;
+    grid-template-columns: repeat($cols, 1fr);
+    grid-gap: $gap;
+    padding: $padding;
 }
 
 .grid-item {
-    width: 100px;
-    height: 100px;
-    margin: 5px;
+    width: 100%;
     border: 1px solid #666;
     box-sizing: border-box;
-    float: left;
+}
+
+@media only screen and (max-width: $BREAKPOINT_S) {
+    .grid {@include gridLayout(2, 10px, 10px);};
+    .grid-item {height: 200px};
+}
+
+@media only screen and (min-width: $BREAKPOINT_S) and (max-width: $BREAKPOINT_M) {
+    .grid {@include gridLayout(3, 10px, 10px);};
+    .grid-item {height: 175px};
+}
+
+@media only screen and (min-width: $BREAKPOINT_M) and (max-width: $BREAKPOINT_L) {
+    .grid {@include gridLayout(4, 10px, 10px);};
+    .grid-item {height: 200px};
+}
+
+@media only screen and (min-width: $BREAKPOINT_L) and (max-width: $BREAKPOINT_XL) {
+    .grid {@include gridLayout(5, 10px, 10px);};
+    .grid-item {height: 200px};
+}
+
+@media only screen and (min-width: $BREAKPOINT_XL) {
+    .grid {
+        @include gridLayout(5, 10px, 10px);
+        width: $BREAKPOINT_XL;
+        margin: 0 auto;
+    };
+    .grid-item {height: 220px};
 }
