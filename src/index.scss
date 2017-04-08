@@ -1,0 +1,16 @@
+
+.grid-row {
+    width: 330px;
+    height: 110px;
+    margin: 5px;
+    border: 1px dashed #666;
+}
+
+.grid-item {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border: 1px solid #666;
+    box-sizing: border-box;
+    float: left;
+}

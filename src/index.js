@@ -5,6 +5,7 @@ import PlayerContainer from './containers/playerContainer/PlayerContainer.jsx';
 import {Provider} from 'react-redux';
 import appStore from './store/appStore';
 import {Router, Route, browserHistory, hashHistory} from 'react-router';
+import indexCss from './index.scss';
 
 ReactDOM.render(
     <Provider store={appStore}>

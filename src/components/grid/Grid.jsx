@@ -11,7 +11,7 @@ export function Grid({cols, data = {items: []}, handleSelect}) {
         }
     });
     return (
-        <div>
+        <div className="grid">
             {rows.map((row, index) =>
                 <GridRow
                     key={index}
