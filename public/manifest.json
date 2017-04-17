@@ -1,0 +1,23 @@
+{
+    "short_name": "react vod web",
+    "name": "React VOD Web",
+    "icons": [
+        {
+            "src": "icon96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "icon144x1444.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icon192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone"
+}
