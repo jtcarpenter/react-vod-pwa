@@ -15,12 +15,16 @@ export class GridContainer extends Component {
 
     render() {
         const {grid} = this.props;
+        let content = <h2>You are offline</h2>;
+        if (grid.data.items) {
+            content = <Grid
+                data={grid.data}
+                handleSelect={this.handleSelect}
+            ></Grid>;
+        }
         return (
             <div>
-                <Grid
-                    data={grid.data}
-                    handleSelect={this.handleSelect}
-                ></Grid>
+                {content}
             </div>
         )
     }

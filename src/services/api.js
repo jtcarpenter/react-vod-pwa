@@ -12,9 +12,7 @@ export const api = {
                 return response.json()
                     .then((data) => data);
             })
-            .catch((error) => {
-                throw error;
-            })
+            .catch((error) => ({error}))
     },
 
     player: {
@@ -26,8 +24,6 @@ export const api = {
                 return response.json()
                     .then((data) => data);
             })
-            .catch((error) => {
-                throw error;
-            })
+            .catch((error) => ({error}))
     }
 }
