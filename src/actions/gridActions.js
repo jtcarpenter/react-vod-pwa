@@ -2,13 +2,13 @@ import * as types from '../constants/gridActionTypes';
 
 export function load() {
     return {
-        type: types.LOAD
+        type: types.LOAD,
     };
 }
 
-export function loaded(data) {
+export function loaded(payload) {
     return {
         type: types.LOADED,
-        data
+        payload
     }
 }

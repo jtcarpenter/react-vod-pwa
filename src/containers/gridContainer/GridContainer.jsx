@@ -15,7 +15,7 @@ export class GridContainer extends Component {
 
     render() {
         const {grid} = this.props;
-        let content = <h2>You are offline</h2>;
+        let content = <h2>Couldn't load any assets</h2>;
         if (grid.data.items) {
             content = <Grid
                 data={grid.data}
