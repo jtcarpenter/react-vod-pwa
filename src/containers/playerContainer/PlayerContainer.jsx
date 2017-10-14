@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Player from '../../components/player/Player.jsx';
 import {load} from '../../actions/playerActions';
+import Error from '../../components/error/Error.jsx';
 
 export class PlayerContainer extends Component {
 
@@ -14,10 +15,13 @@ export class PlayerContainer extends Component {
     }
 
     render() {
-        const {player} = this.props;
+        const {playerState} = this.props;
+        if (playerState.error) {
+            return <Error errorMessage={playerState.error} />
+        }
         return (
             <div>
-                <Player data={player.data}></Player>
+                <Player data={playerState.data}></Player>
             </div>
         )
     }
@@ -28,5 +32,5 @@ export class PlayerContainer extends Component {
 }
 
 export default connect((state) => ({
-    player: state.playerReducer
+    playerState: state.playerReducer
 }))(PlayerContainer);

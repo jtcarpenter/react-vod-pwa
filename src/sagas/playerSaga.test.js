@@ -9,6 +9,7 @@ const playerData = {
     title: 'test',
     src: 'test'
 };
+const playerError = {error: 'an error'};
 
 describe('playerSaga', () => {
 
@@ -27,5 +28,11 @@ describe('playerSaga', () => {
         generator.next(actions.load(playerOpts))
         const next = generator.next(playerData);
         expect(next.value).toEqual(put(actions.loaded(playerData)));
-    })
+    });
+
+    it('should yield actions.failed(playerError)', () => {
+        generator.next(actions.load());
+        const next = generator.next(playerError);
+        expect(next.value).toEqual(put(actions.failed(playerError)));
+    });
 });

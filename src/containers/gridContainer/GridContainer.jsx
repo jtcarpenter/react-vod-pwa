@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Grid from '../../components/grid/Grid.jsx';
 import {load} from '../../actions/gridActions';
+import Error from '../../components/error/Error.jsx';
 
 export class GridContainer extends Component {
 
@@ -14,17 +15,16 @@ export class GridContainer extends Component {
     }
 
     render() {
-        const {grid} = this.props;
-        let content = <h2>Couldn't load any assets</h2>;
-        if (grid.data.items) {
-            content = <Grid
-                data={grid.data}
-                handleSelect={this.handleSelect}
-            ></Grid>;
+        const {gridState} = this.props;
+        if (gridState.error) {
+            return <Error errorMessage={gridState.error} />
         }
         return (
             <div>
-                {content}
+                <Grid
+                    data={gridState.data}
+                    handleSelect={this.handleSelect}
+                ></Grid>
             </div>
         )
     }
@@ -39,5 +39,5 @@ export class GridContainer extends Component {
 }
 
 export default connect((state) => ({
-    grid: state.gridReducer
+    gridState: state.gridReducer
 }))(GridContainer);

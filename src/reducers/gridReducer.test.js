@@ -1,5 +1,5 @@
 import gridReducer from './gridReducer'
-import * as types from '../constants/gridActionTypes'
+import * as gridTypes from '../constants/gridActionTypes'
 
 const state = {
     data: {
@@ -7,13 +7,23 @@ const state = {
     }
 }
 const loadedAction = {
-    type: types.LOADED,
+    type: gridTypes.LOADED,
     payload: {items: []}
+}
+const error = 'an error';
+const failedAction = {
+    type: gridTypes.FAILED,
+    payload: {error}
 }
 
 describe('gridReducer', () => {
     it('should create return state with loaded data', () => {
         const actual = gridReducer(state, loadedAction);
         expect(actual.data).toEqual(loadedAction.payload);
-    })
-})
+    });
+
+    it('should create return state with error on after fail action', () => {
+        const actual = gridReducer(state, failedAction);
+        expect(actual.error).toEqual(failedAction.payload.error);
+    });
+});

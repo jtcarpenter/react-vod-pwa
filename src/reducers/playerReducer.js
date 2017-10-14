@@ -1,4 +1,4 @@
-import * as types from '../constants/playerActionTypes';
+import * as playerTypes from '../constants/playerActionTypes';
 
 const defaultState = {
     data: {
@@ -9,12 +9,16 @@ const defaultState = {
 
 export default function playerReducer(state = defaultState, action) {
     switch (action.type) {
-        case types.LOADED:
+        case playerTypes.LOADED:
             return Object.assign({}, state, {
                 data: {
                     id: action.payload.id,
                     src: action.payload.src
                 }
+            });
+        case playerTypes.FAILED:
+            return Object.assign({}, state, {
+                error: action.payload.error
             });
         default:
             return state;

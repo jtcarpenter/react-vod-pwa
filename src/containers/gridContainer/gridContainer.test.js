@@ -6,7 +6,7 @@ const gridData = {data: {items: []}};
 const mockDispatch = () => ({});
 const gridContainer = (
     <GridContainer
-        grid={gridData}
+        gridState={gridData}
         dispatch={mockDispatch}
     >
     </GridContainer>
@@ -17,4 +17,4 @@ describe('GridContainer', () => {
         const wrapper = shallow(gridContainer);
         expect(wrapper.exists()).toBe(true);
     })
-})
+});

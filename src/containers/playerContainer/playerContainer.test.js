@@ -9,7 +9,7 @@ const playerContainer = (
     <PlayerContainer
         dispatch={mockDispatch}
         match={mockMatch}
-        player={playerData}
+        playerState={playerData}
     >
     </PlayerContainer>
 );

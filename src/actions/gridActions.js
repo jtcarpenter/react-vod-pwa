@@ -1,14 +1,21 @@
-import * as types from '../constants/gridActionTypes';
+import * as gridTypes from '../constants/gridActionTypes';
 
 export function load() {
     return {
-        type: types.LOAD,
+        type: gridTypes.LOAD,
     };
 }
 
 export function loaded(payload) {
     return {
-        type: types.LOADED,
+        type: gridTypes.LOADED,
+        payload
+    }
+}
+
+export function failed(payload) {
+    return {
+        type: gridTypes.FAILED,
         payload
     }
 }
