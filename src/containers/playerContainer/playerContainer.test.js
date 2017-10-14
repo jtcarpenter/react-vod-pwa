@@ -3,10 +3,12 @@ import {shallow} from 'enzyme';
 import {PlayerContainer} from './PlayerContainer';
 
 const playerData = {data: {id: 1}};
+const mockMatch = {params: {}}
 const mockDispatch = () => ({});
 const playerContainer = (
     <PlayerContainer
         dispatch={mockDispatch}
+        match={mockMatch}
         player={playerData}
     >
     </PlayerContainer>

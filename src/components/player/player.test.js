@@ -18,4 +18,4 @@ describe('Player', () => {
         const wrapper = shallow(player);
         expect(wrapper.exists()).toBe(true);
     })
-})
+});

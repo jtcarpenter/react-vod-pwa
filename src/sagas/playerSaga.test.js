@@ -12,7 +12,11 @@ const playerData = {
 
 describe('playerSaga', () => {
 
-    const generator = loaded({data: playerOpts});
+    let generator = null;
+
+    beforeEach(() => {
+        generator = loaded({payload: playerOpts});
+    });
 
     it('should yield actions.load', () => {
         const next = generator.next(actions.load(playerOpts))
@@ -20,6 +24,7 @@ describe('playerSaga', () => {
     });
 
     it('should yield actions.loaded(playerData)', () => {
+        generator.next(actions.load(playerOpts))
         const next = generator.next(playerData);
         expect(next.value).toEqual(put(actions.loaded(playerData)));
     })

@@ -1,18 +1,21 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
 import {GridItem} from './GridItem';
+import {MemoryRouter} from 'react-router-dom';
 
 const gridItemData = {
-    id: 1,
+    id: 'test',
     title: 'test'
 };
 const gridItemSelectHandler = () => null;
 const gridItem = (
-    <GridItem
-        item={gridItemData}
-        handleSelect={gridItemSelectHandler}
-    >
-    </GridItem>
+    <MemoryRouter initialEntries={['/']} initialIndex={0}>
+        <GridItem
+            item={gridItemData}
+            handleSelect={gridItemSelectHandler}
+        >
+        </GridItem>
+    </MemoryRouter>
 )
 
 describe('GridItem', () => {
@@ -26,4 +29,4 @@ describe('GridItem', () => {
         expect(wrapper.find(`#${gridItemData.id}`).text())
             .toEqual(gridItemData.title);
     })
-})
+});

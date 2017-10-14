@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 export function Player({data}) {
     return (
@@ -13,6 +13,3 @@ export function Player({data}) {
 }
 
 export default Player;
-
-
-
