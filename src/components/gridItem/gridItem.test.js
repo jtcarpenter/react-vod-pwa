@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import {GridItem} from './GridItem';
+import {GridItem} from 'components/gridItem/GridItem';
 import {MemoryRouter} from 'react-router-dom';
 
 const gridItemData = {

@@ -1,7 +1,7 @@
-import {loaded} from './gridSaga'
-import * as actions from '../actions/gridActions'
+import {loaded} from 'sagas/gridSaga'
+import * as actions from 'actions/gridActions'
 import {call, put} from 'redux-saga/effects'
-import {api} from '../services/api'
+import {api} from 'services/api'
 
 const gridData = {items: []};
 const gridError = {error: 'an error'};

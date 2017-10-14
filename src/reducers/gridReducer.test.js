@@ -1,5 +1,5 @@
-import gridReducer from './gridReducer'
-import * as gridTypes from '../constants/gridActionTypes'
+import gridReducer from 'reducers/gridReducer'
+import * as gridTypes from 'constants/gridActionTypes'
 
 const state = {
     data: {

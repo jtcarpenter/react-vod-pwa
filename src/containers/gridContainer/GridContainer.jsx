@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Grid from '../../components/grid/Grid.jsx';
-import {load} from '../../actions/gridActions';
-import Error from '../../components/error/Error.jsx';
+import Grid from 'components/grid/Grid.jsx';
+import {load} from 'actions/gridActions';
+import Error from 'components/error/Error.jsx';
 
 export class GridContainer extends Component {
 

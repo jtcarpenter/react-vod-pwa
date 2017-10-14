@@ -1,4 +1,4 @@
-import * as homeTypes from '../constants/gridActionTypes';
+import * as homeTypes from 'constants/gridActionTypes';
 
 const defaultState = {
     data: {

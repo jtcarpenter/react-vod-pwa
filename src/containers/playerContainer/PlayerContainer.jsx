@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Player from '../../components/player/Player.jsx';
-import {load} from '../../actions/playerActions';
-import Error from '../../components/error/Error.jsx';
+import Player from 'components/player/Player.jsx';
+import {load} from 'actions/playerActions';
+import Error from 'components/error/Error.jsx';
 
 export class PlayerContainer extends Component {
 

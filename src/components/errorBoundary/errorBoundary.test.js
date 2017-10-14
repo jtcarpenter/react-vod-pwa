@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from 'components/errorBoundary/ErrorBoundary';
 
 const errorBoundary = (
     <ErrorBoundary>

@@ -1,5 +1,5 @@
 import React from 'react';
-import GridItem from '../gridItem/GridItem.jsx';
+import GridItem from 'components/gridItem/GridItem.jsx';
 
 export function Grid({data = {items: []}, handleSelect}) {
     return (

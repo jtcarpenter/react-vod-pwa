@@ -1,5 +1,5 @@
-import * as actions from './playerActions'
-import * as playerTypes from '../constants/playerActionTypes'
+import * as actions from 'actions/playerActions'
+import * as playerTypes from 'constants/playerActionTypes'
 
 const playerOpts = {id: 0};
 const playerData = {

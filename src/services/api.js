@@ -1,4 +1,4 @@
-import * as errorMessages from '../constants/errorMessages';
+import * as errorMessages from 'constants/errorMessages';
 
 const GRID_DATA_URL = '/grid-data.json';
 const PLAYER_DATA_URL = '/item-data';

@@ -1,4 +1,4 @@
-import * as gridTypes from '../constants/gridActionTypes';
+import * as gridTypes from 'constants/gridActionTypes';
 
 export function load() {
     return {

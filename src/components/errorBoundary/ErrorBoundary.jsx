@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
-import Error from '../../components/error/Error.jsx';
-import * as errorMessages from '../../constants/errorMessages';
+import Error from 'components/error/Error.jsx';
+import * as errorMessages from 'constants/errorMessages';
 
 export default class ErrorBoundary extends Component {
 

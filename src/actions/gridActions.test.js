@@ -1,5 +1,5 @@
-import * as actions from './gridActions'
-import * as gridTypes from '../constants/gridActionTypes'
+import * as actions from 'actions/gridActions'
+import * as gridTypes from 'constants/gridActionTypes'
 
 const gridData = {items: []};
 const error = 'an error';

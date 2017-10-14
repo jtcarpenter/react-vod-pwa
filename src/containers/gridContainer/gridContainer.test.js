@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {GridContainer} from './GridContainer';
+import {GridContainer} from 'containers/gridContainer/GridContainer';
 
 const gridData = {data: {items: []}};
 const mockDispatch = () => ({});

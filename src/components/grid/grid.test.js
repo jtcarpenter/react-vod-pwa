@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {Grid} from './Grid';
+import {Grid} from 'components/grid/Grid';
 
 const gridData = {data: {items: []}};
 const grid = (
