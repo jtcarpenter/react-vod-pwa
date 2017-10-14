@@ -10,7 +10,7 @@ export function GridItem({item, handleSelect}) {
     return (
         <Link to={`/player/${item.id}`} className="grid-item">
             <div
-                id={item.id}
+                id={`item-${item.id}`}
                 onClick={handleClick}
             >
                 {item.title}

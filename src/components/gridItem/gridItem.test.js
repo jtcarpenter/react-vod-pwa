@@ -26,7 +26,7 @@ describe('GridItem', () => {
 
     it('should render correct title', () => {
         const wrapper = mount(gridItem);
-        expect(wrapper.find(`#${gridItemData.id}`).text())
+        expect(wrapper.find(`#item-${gridItemData.id}`).text())
             .toEqual(gridItemData.title);
     })
 });
