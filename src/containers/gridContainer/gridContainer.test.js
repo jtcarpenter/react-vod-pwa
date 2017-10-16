@@ -3,11 +3,11 @@ import {shallow} from 'enzyme';
 import {GridContainer} from 'containers/gridContainer/GridContainer';
 
 const gridData = {data: {items: []}};
-const mockDispatch = () => ({});
+const mockLoad = () => ({});
 const gridContainer = (
     <GridContainer
         gridState={gridData}
-        dispatch={mockDispatch}
+        load={mockLoad}
     >
     </GridContainer>
 );

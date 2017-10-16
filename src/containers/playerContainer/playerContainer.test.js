@@ -4,10 +4,10 @@ import {PlayerContainer} from 'containers/playerContainer/PlayerContainer';
 
 const playerData = {data: {id: 1}};
 const mockMatch = {params: {}}
-const mockDispatch = () => ({});
+const mockLoad = () => ({});
 const playerContainer = (
     <PlayerContainer
-        dispatch={mockDispatch}
+        load={mockLoad}
         match={mockMatch}
         playerState={playerData}
     >

@@ -15,4 +15,4 @@ describe('Grid', () => {
         const wrapper = shallow(grid);
         expect(wrapper.exists()).toBe(true);
     })
-})
+});

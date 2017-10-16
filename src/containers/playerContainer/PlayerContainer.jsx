@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import Player from 'components/player/Player.jsx';
 import {load} from 'actions/playerActions';
 import Error from 'components/error/Error.jsx';
@@ -8,10 +9,9 @@ export class PlayerContainer extends Component {
 
     constructor(props) {
         super();
-        this.load = this.load.bind(this);
         this.props = props;
         const {match} = this.props;
-        this.load(match.params);
+        this.props.load(match.params);
     }
 
     render() {
@@ -25,12 +25,25 @@ export class PlayerContainer extends Component {
             </div>
         )
     }
-
-    load(opts) {
-        this.props.dispatch(load(opts));
-    }
 }
 
-export default connect((state) => ({
-    playerState: state.playerReducer
-}))(PlayerContainer);
+PlayerContainer.propTypes = {
+    playerState: PropTypes.object.isRequired,
+    load: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+    return {
+        playerState: state.playerReducer
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        load: (opts) => {
+            dispatch(load(opts));
+        }
+    }
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(PlayerContainer);

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import Grid from 'components/grid/Grid.jsx';
 import {load} from 'actions/gridActions';
 import Error from 'components/error/Error.jsx';
@@ -8,10 +9,8 @@ export class GridContainer extends Component {
 
     constructor(props) {
         super();
-        this.load = this.load.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
         this.props = props;
-        this.load();
+        this.props.load();
     }
 
     render() {
@@ -23,21 +22,29 @@ export class GridContainer extends Component {
             <div>
                 <Grid
                     data={gridState.data}
-                    handleSelect={this.handleSelect}
                 ></Grid>
             </div>
         )
     }
-
-    load() {
-        this.props.dispatch(load());
-    }
-
-    handleSelect(index) {
-        console.log(`${index} selected`);
-    }
 }
 
-export default connect((state) => ({
-    gridState: state.gridReducer
-}))(GridContainer);
+GridContainer.propTypes = {
+    gridState: PropTypes.object.isRequired,
+    load: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+    return {
+        gridState: state.gridReducer
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        load: () => {
+            dispatch(load());
+        }
+    }
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(GridContainer);
