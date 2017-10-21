@@ -33,4 +33,32 @@ describe('playerActions', () => {
         }
         expect(actions.failed(error)).toEqual(expectedAction);
     });
+
+    it('should create an action to attempt to start playback', () => {
+        const expectedAction = {
+            type: playerTypes.PLAY_VIDEO
+        }
+        expect(actions.playVideo()).toEqual(expectedAction);
+    });
+
+    it('should create an action to attempt to pause playback', () => {
+        const expectedAction = {
+            type: playerTypes.PAUSE_VIDEO
+        }
+        expect(actions.pauseVideo()).toEqual(expectedAction);
+    });
+
+    it('should create an action for play did start', () => {
+        const expectedAction = {
+            type: playerTypes.DID_PLAY_VIDEO
+        }
+        expect(actions.didPlayVideo()).toEqual(expectedAction);
+    });
+
+    it('should create an action for play did pause', () => {
+        const expectedAction = {
+            type: playerTypes.DID_PAUSE_VIDEO
+        }
+        expect(actions.didPauseVideo()).toEqual(expectedAction);
+    });
 })

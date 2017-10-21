@@ -3,9 +3,27 @@ $BREAKPOINT_M: 720px;
 $BREAKPOINT_L: 900px;
 $BREAKPOINT_XL: 1080px;
 
+$PLAYER_CTRLS_BG_COLOUR: rgba(0, 0, 0, 0.4);
+
+$PLAYER_CTRL_HEIGHT: 3.5rem;
+$PLAYER_CTRL_FG_COLOUR: #888888;
+$PLAYER_CTRL_BG_COLOUR: transparent;
+$PLAYER_CTRL_FG_COLOUR_FOCUSED: #dddddd;
+$PLAYER_CTRL_BG_COLOUR_FOCUSED: #222222;
+$PLAYER_CTRL_BORDER_WIDTH: 0;
+$PLAYER_CTRL_GAP_WIDTH: .5rem;
+
 body {
     margin: 0;
     padding: 0;
+    background-color: black;
+    font-family:
+        "HelveticaNeue-Light",
+        "Helvetica Neue Light",
+        "Helvetica Neue",
+        Helvetica, Arial,
+        "Lucida Grande",
+        sans-serif;
 }
 
 @mixin gridLayout($cols, $gap, $padding) {
@@ -48,4 +66,124 @@ body {
         margin: 0 auto;
     };
     .grid-item {height: 220px};
+}
+
+.player-ctrls {
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0 15px 0;
+    position: absolute;
+    top: 70%;
+    background-color: $PLAYER_CTRLS_BG_COLOUR;
+    width: 95%;
+    margin: 0 2.5%;
+}
+
+.player-ctrls-title {
+    margin-left: 0;
+    display: inline-block;
+    font-size: 2.5rem;
+    color: $PLAYER_CTRL_BG_COLOUR_FOCUSED;
+    margin: 0 0 10px 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+}
+
+.player-ctrls-btns {
+    text-align: center;
+}
+
+.player-ctrl {
+    margin-right: $PLAYER_CTRL_GAP_WIDTH;
+    font-size: $PLAYER_CTRL_HEIGHT;
+    padding: 0;
+    border: $PLAYER_CTRL_BORDER_WIDTH + px solid $PLAYER_CTRL_FG_COLOUR;
+    display: inline-block;
+    background-color: transparent;
+}
+
+.player-ctrl:focus {
+    outline: none;
+}
+
+.player-ctrl:last-child {
+    margin-right: 0;
+}
+
+.player-ctrl__play {
+    border-radius: 50%;
+    border-color: none;
+}
+
+.player-ctrl__play:hover {
+    color: $PLAYER_CTRL_FG_COLOUR_FOCUSED;
+    border-color: $PLAYER_CTRL_BG_COLOUR_FOCUSED;
+}
+
+.player-ctrl__back {
+    border-radius: 10px;
+}
+
+.player-ctrl__back:hover {
+    color: $PLAYER_CTRL_FG_COLOUR_FOCUSED;
+    border-color: $PLAYER_CTRL_BG_COLOUR_FOCUSED;
+}
+
+.player-video {
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('/fonts/icomoon.eot?1ste5n');
+    src: url('/fonts/icomoon.eot?1ste5n#iefix') format('embedded-opentype'),
+        url('/fonts/icomoon.ttf?1ste5n') format('truetype'),
+        url('/fonts/icomoon.woff?1ste5n') format('woff'),
+        url('/fonts/icomoon.svg?1ste5n#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: $PLAYER_CTRL_HEIGHT + px;
+}
+
+.icon-play:before {
+    content: "\ea15";
+}
+.icon-pause:before {
+    content: "\ea16";
+}
+.icon-stop:before {
+    content: "\ea17";
+}
+.icon-previous:before {
+    content: "\ea18";
+}
+.icon-next:before {
+    content: "\ea19";
+}
+.icon-backward:before {
+    content: "\ea1a";
+}
+.icon-forward:before {
+    content: "\ea1b";
+}
+.icon-arrow-left:before {
+    content: "\ea40";
 }

@@ -1,27 +1,25 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {Player} from 'components/player/Player';
+import {Video} from 'components/video/Video';
 
-const playerData = {
-    id: 1,
+const videoData = {
     src: 'test'
 };
 const mockVideoState = 'test';
 const onDidPlay = () => {};
 const onDidPause = () => {};
 const player = (
-    <Player
-        data={playerData}
+    <Video
+        data={videoData}
         videoState={mockVideoState}
         onDidPlay={onDidPlay}
         onDidPause={onDidPause}
-    >
-    </Player>
+    />
 )
 
-describe('Player', () => {
+describe('Video', () => {
     it('should render', () => {
         const wrapper = shallow(player);
         expect(wrapper.exists()).toBe(true);
     })
-});
+})

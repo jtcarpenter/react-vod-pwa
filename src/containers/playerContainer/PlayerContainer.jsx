@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {Redirect} from 'react-router-dom';
 import Player from 'components/player/Player.jsx';
-import {load} from 'actions/playerActions';
+import {
+    load,
+    playVideo,
+    pauseVideo,
+    didPlayVideo,
+    didPauseVideo
+} from 'actions/playerActions';
 import Error from 'components/error/Error.jsx';
 
 export class PlayerContainer extends Component {
@@ -12,6 +19,23 @@ export class PlayerContainer extends Component {
         this.props = props;
         const {match} = this.props;
         this.props.load(match.params);
+        this.handleBack = this.handleBack.bind(this);
+        this.handlePlay = this.handlePlay.bind(this);
+        this.handlePause = this.handlePause.bind(this);
+    }
+
+    handleBack() {
+        this.setState({
+            shouldDoBack: true
+        });
+    }
+
+    handlePlay() {
+        this.props.playVideo();
+    }
+
+    handlePause() {
+        this.props.pauseVideo();
     }
 
     render() {
@@ -19,9 +43,21 @@ export class PlayerContainer extends Component {
         if (playerState.error) {
             return <Error errorMessage={playerState.error} />
         }
+        if (this.state && this.state.shouldDoBack) {
+            return <Redirect push to="/" />
+        }
         return (
             <div>
-                <Player data={playerState.data}></Player>
+                <Player
+                    data={playerState.data}
+                    videoState={playerState.videoState}
+                    handleBack={this.handleBack}
+                    handlePlay={this.handlePlay}
+                    handlePause={this.handlePause}
+                    onDidPlay={this.props.onDidPlay}
+                    onDidPause={this.props.onDidPause}
+                >
+                </Player>
             </div>
         )
     }
@@ -29,7 +65,11 @@ export class PlayerContainer extends Component {
 
 PlayerContainer.propTypes = {
     playerState: PropTypes.object.isRequired,
-    load: PropTypes.func.isRequired
+    load: PropTypes.func.isRequired,
+    playVideo: PropTypes.func.isRequired,
+    pauseVideo: PropTypes.func.isRequired,
+    onDidPlay: PropTypes.func.isRequired,
+    onDidPause: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
@@ -42,6 +82,18 @@ const mapDispatchToProps = (dispatch) => {
     return {
         load: (opts) => {
             dispatch(load(opts));
+        },
+        playVideo: () => {
+            dispatch(playVideo());
+        },
+        pauseVideo: () => {
+            dispatch(pauseVideo());
+        },
+        onDidPlay: () => {
+            dispatch(didPlayVideo());
+        },
+        onDidPause: () => {
+            dispatch(didPauseVideo());
         }
     }
 };
