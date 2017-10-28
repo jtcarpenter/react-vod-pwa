@@ -8,7 +8,13 @@ export function GridItem({item}) {
             <div
                 id={`item-${item.id}`}
             >
-                {item.title}
+                <h2 className="grid-item__title">
+                    {item.title}
+                </h2>
+                <img
+                    className="grid-item__thumb"
+                    src={item.thumb}
+                />
             </div>
         </Link>
     )
