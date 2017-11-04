@@ -1,12 +1,11 @@
 import * as errorMessages from 'constants/errorMessages';
 
-const GRID_DATA_URL = '/grid-data.json';
-const PLAYER_DATA_URL = '/item-data';
+const DATA_URL = '/api';
 
 export const api = {
 
     grid: {
-        get: () => fetch(GRID_DATA_URL)
+        get: () => fetch(DATA_URL)
             .then((response) => {
                 if (response.status / 100 !== 2) {
                     return {error: errorMessages.ERROR_CONTENT};
@@ -18,7 +17,7 @@ export const api = {
     },
 
     player: {
-        get: (opts) => fetch(`${PLAYER_DATA_URL}-${opts.id}.json`)
+        get: (opts) => fetch(`${DATA_URL}/${opts.id}.json`)
             .then((response) => {
                 if (response.status / 100 !== 2) {
                     return {error: errorMessages.ERROR_CONTENT};

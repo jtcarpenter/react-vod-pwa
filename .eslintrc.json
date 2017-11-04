@@ -110,7 +110,7 @@
         "no-confusing-arrow": "error",
         "no-console": "warn",
         "no-continue": "error",
-        "no-div-regex": "error",
+        "no-div-regex": "off",
         "no-duplicate-imports": "error",
         "no-else-return": "error",
         "no-empty-function": "error",
