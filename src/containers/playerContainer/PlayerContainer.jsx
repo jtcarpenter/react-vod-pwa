@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
@@ -12,7 +12,7 @@ import {
 } from 'actions/playerActions';
 import Error from 'components/error/Error.jsx';
 
-export class PlayerContainer extends Component {
+export class PlayerContainer extends PureComponent {
 
     constructor(props) {
         super();
@@ -47,18 +47,16 @@ export class PlayerContainer extends Component {
             return <Redirect push to="/" />
         }
         return (
-            <div>
-                <Player
-                    data={playerState.data}
-                    videoState={playerState.videoState}
-                    handleBack={this.handleBack}
-                    handlePlay={this.handlePlay}
-                    handlePause={this.handlePause}
-                    onDidPlay={this.props.onDidPlay}
-                    onDidPause={this.props.onDidPause}
-                >
-                </Player>
-            </div>
+            <Player
+                data={playerState.data}
+                videoState={playerState.videoState}
+                handleBack={this.handleBack}
+                handlePlay={this.handlePlay}
+                handlePause={this.handlePause}
+                onDidPlay={this.props.onDidPlay}
+                onDidPause={this.props.onDidPause}
+            >
+            </Player>
         )
     }
 }

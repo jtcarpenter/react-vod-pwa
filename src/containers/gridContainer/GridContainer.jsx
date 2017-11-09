@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from 'components/grid/Grid.jsx';
 import {load} from 'actions/gridActions';
 import Error from 'components/error/Error.jsx';
 
-export class GridContainer extends Component {
+export class GridContainer extends PureComponent {
 
     constructor(props) {
         super();
@@ -19,11 +19,10 @@ export class GridContainer extends Component {
             return <Error errorMessage={gridState.error} />
         }
         return (
-            <div>
-                <Grid
-                    data={gridState.data}
-                ></Grid>
-            </div>
+            <Grid
+                data={gridState.data}
+            >
+            </Grid>
         )
     }
 }
