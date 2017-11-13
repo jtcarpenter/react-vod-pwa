@@ -1,28 +1,28 @@
-import * as actions from 'actions/gridActions'
-import * as gridTypes from 'constants/gridActionTypes'
+import * as actions from 'actions/episodeActions'
+import * as episodeTypes from 'constants/episodeActionTypes'
 
-const gridData = {items: []};
+const episodeData = {items: []};
 const error = 'an error';
 
-describe('gridActions', () => {
+describe('episodeActions', () => {
     it('should create an action to load data', () => {
         const expectedAction = {
-            type: gridTypes.LOAD
+            type: episodeTypes.LOAD
         }
         expect(actions.load()).toEqual(expectedAction);
     });
 
     it('should create an action to return data', () => {
         const expectedAction = {
-            type: gridTypes.LOADED,
-            payload: gridData
+            type: episodeTypes.LOADED,
+            payload: episodeData
         }
-        expect(actions.loaded(gridData)).toEqual(expectedAction);
+        expect(actions.loaded(episodeData)).toEqual(expectedAction);
     });
 
     it('should create an action to return an error', () => {
         const expectedAction = {
-            type: gridTypes.FAILED,
+            type: episodeTypes.FAILED,
             payload: error
         }
         expect(actions.failed(error)).toEqual(expectedAction);

@@ -1,11 +1,11 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
-import * as types from 'constants/playerActionTypes';
-import * as actions from 'actions/playerActions'
+import * as episodeTypes from 'constants/episodeActionTypes'
+import * as actions from 'actions/episodeActions'
 import {api} from 'services/api'
 
 // Our worker Saga: will perform the async task
 export function *loaded(action) {
-    const data = yield call(api.player.get, action.payload);
+    const data = yield call(api.episodes.get, action.payload);
     if (data.error) {
         yield put(actions.failed(data));
     }
@@ -14,5 +14,5 @@ export function *loaded(action) {
 
 // Our watcher Saga: spawn a new loaded task on each LOAD
 export function *watchLoad() {
-    yield takeEvery(types.LOAD, loaded)
+    yield takeEvery(episodeTypes.LOAD, loaded)
 }

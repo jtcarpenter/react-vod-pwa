@@ -2,8 +2,9 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from 'components/grid/Grid.jsx';
-import {load} from 'actions/gridActions';
+import {load} from 'actions/episodeActions';
 import Error from 'components/error/Error.jsx';
+import {episodesSelector} from 'reducers/episodeReducer';
 
 export class GridContainer extends PureComponent {
 
@@ -14,13 +15,13 @@ export class GridContainer extends PureComponent {
     }
 
     render() {
-        const {gridState} = this.props;
-        if (gridState.error) {
-            return <Error errorMessage={gridState.error} />
+        const {episodes, error} = this.props;
+        if (error) {
+            return <Error errorMessage={error} />
         }
         return (
             <Grid
-                data={gridState.data}
+                items={episodes}
             >
             </Grid>
         )
@@ -28,13 +29,15 @@ export class GridContainer extends PureComponent {
 }
 
 GridContainer.propTypes = {
-    gridState: PropTypes.object.isRequired,
+    episodes: PropTypes.array.isRequired,
+    error: PropTypes.string,
     load: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
     return {
-        gridState: state.gridReducer
+        episodes: episodesSelector(state.episodeReducer.byId),
+        error: state.episodeReducer.error
     };
 };
 
@@ -46,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(GridContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(GridContainer);

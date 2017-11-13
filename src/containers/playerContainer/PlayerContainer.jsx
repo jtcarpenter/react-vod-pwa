@@ -3,14 +3,15 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import Player from 'components/player/Player.jsx';
+import {load} from 'actions/episodeActions';
 import {
-    load,
     playVideo,
     pauseVideo,
     didPlayVideo,
     didPauseVideo
 } from 'actions/playerActions';
 import Error from 'components/error/Error.jsx';
+import {episodeSelector} from 'reducers/episodeReducer';
 
 export class PlayerContainer extends PureComponent {
 
@@ -39,17 +40,17 @@ export class PlayerContainer extends PureComponent {
     }
 
     render() {
-        const {playerState} = this.props;
-        if (playerState.error) {
-            return <Error errorMessage={playerState.error} />
+        const {episode, error, videoState} = this.props;
+        if (error) {
+            return <Error errorMessage={error} />
         }
         if (this.state && this.state.shouldDoBack) {
             return <Redirect push to="/" />
         }
         return (
             <Player
-                data={playerState.data}
-                videoState={playerState.videoState}
+                data={episode}
+                videoState={videoState}
                 handleBack={this.handleBack}
                 handlePlay={this.handlePlay}
                 handlePause={this.handlePause}
@@ -62,7 +63,9 @@ export class PlayerContainer extends PureComponent {
 }
 
 PlayerContainer.propTypes = {
-    playerState: PropTypes.object.isRequired,
+    episode: PropTypes.object,
+    error: PropTypes.string,
+    videoState: PropTypes.string,
     load: PropTypes.func.isRequired,
     playVideo: PropTypes.func.isRequired,
     pauseVideo: PropTypes.func.isRequired,
@@ -72,7 +75,12 @@ PlayerContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        playerState: state.playerReducer
+        episode: episodeSelector(
+            state.episodeReducer.selected,
+            state.episodeReducer.byId
+        ),
+        error: state.episodeReducer.error,
+        videoState: state.playerReducer.videoState
     };
 };
 
@@ -96,4 +104,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(PlayerContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerContainer);

@@ -1,10 +1,8 @@
-import {watchLoad as watchLoadGrid} from 'sagas/gridSaga'
-import {watchLoad as watchLoadItem} from 'sagas/playerSaga'
+import {watchLoad as watchLoadEpisode} from 'sagas/episodeSaga'
 
 // Single entry point to start all Sagas at once
 export default function *rootSaga() {
     yield [
-        watchLoadGrid(),
-        watchLoadItem()
+        watchLoadEpisode()
     ]
 }

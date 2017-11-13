@@ -2,28 +2,12 @@ import * as playerTypes from 'constants/playerActionTypes';
 import * as playerStates from 'constants/playerStates';
 
 const defaultState = {
-    data: {
-        id: null,
-        src: null
-    },
     videoState: null
 }
 
 export default function playerReducer(state = defaultState, action) {
     switch (action.type) {
-        case playerTypes.LOADED:
-            return Object.assign({}, state, {
-                data: {
-                    id: action.payload.id,
-                    title: action.payload.title,
-                    src: action.payload.src
-                }
-            });
-        case playerTypes.FAILED:
-            return Object.assign({}, state, {
-                error: action.payload.error
-            });
-            case playerTypes.PLAY_VIDEO:
+        case playerTypes.PLAY_VIDEO:
             return Object.assign({}, state, {
                 videoState: playerStates.WILL_PLAY
             });

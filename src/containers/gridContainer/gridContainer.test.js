@@ -2,11 +2,11 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {GridContainer} from 'containers/gridContainer/GridContainer';
 
-const gridData = {data: {items: []}};
+const episodeData = {data: {episodes: []}};
 const mockLoad = () => ({});
 const gridContainer = (
     <GridContainer
-        gridState={gridData}
+        episodes={episodeData.data.episodes}
         load={mockLoad}
     >
     </GridContainer>

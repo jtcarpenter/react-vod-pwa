@@ -72,11 +72,14 @@ function generateList() {
 }
 
 app.get('/api/', (req, res) => {
-    res.json({items: generateList()});
+    res.json({episodes: generateList()});
 });
 
 app.get('/api/:id', (req, res) => {
-    res.json(generateItem(req.params.id, 0));
+    res.json({
+        id: req.params.id,
+        episodes: [generateItem(req.params.id)]
+    });
 });
 
 app.listen(argMap.PORT);
