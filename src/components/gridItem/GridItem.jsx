@@ -1,22 +1,47 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+import GridItemThumb from 'components/gridItemThumb/GridItemThumb.jsx'
+import GridItemTitle from 'components/gridItemTitle/GridItemTitle.jsx';
+import {media} from 'helpers/styleHelper';
+
+export const StyledLink = styled(Link)`
+    width: 100%;
+    border: 1px solid ${(props) => props.theme.DIVIDER};
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-decoration: none;
+    position: relative;
+    height: 200px;
+    &:hover {
+        border: 7px solid ${(props) => props.theme.PRIMARY};
+    };
+    ${media.SMALL`
+        height: 175px;
+    `};
+    ${media.MEDIUM`
+        height: 200px;
+    `};
+    ${media.LARGE`
+        height: 200px;
+    `};
+    ${media.XLARGE`
+        height: 220px;
+    `};
+`;
 
 export function GridItem({item}) {
-
     return (
-        <Link to={`/player/${item.id}`} className="grid-item">
-            <div
-                id={`item-${item.id}`}
-            >
-                <h2 className="grid-item__title">
+        <StyledLink to={`/player/${item.id}`}>
+            <div id={`item-${item.id}`}>
+                <GridItemTitle>
                     {item.title}
-                </h2>
-                <img
-                    className="grid-item__thumb"
+                </GridItemTitle>
+                <GridItemThumb
                     src={item.thumb}
                 />
             </div>
-        </Link>
+        </StyledLink>
     )
 }
 

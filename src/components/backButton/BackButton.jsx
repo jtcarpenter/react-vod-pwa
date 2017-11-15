@@ -1,14 +1,17 @@
 import React from 'react';
+import PlayerCtrl from 'components/playerCtrl/PlayerCtrl.jsx';
+import * as copy from 'constants/copy';
 
 export function BackButton({handleBack}) {
 
     return (
-        <button
+        <PlayerCtrl
             type="button"
-            className="icon-arrow-left player-ctrl player-ctrl__back"
+            icon={copy.ICON_BACK}
+            borderRadius="10px"
             onClick={handleBack}
         >
-        </button>
+        </PlayerCtrl>
     );
 }
 

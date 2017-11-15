@@ -1,8 +1,13 @@
 import React, {PureComponent} from 'react';
+import styled from 'styled-components';
 import * as playerStates from 'constants/playerStates';
 import PropTypes from 'prop-types';
 
 const VIDEO_REF = 'VIDEO_REF';
+
+export const StyledVideo = styled.video`
+    width: 100%;
+`
 
 export class Video extends PureComponent {
 
@@ -30,8 +35,7 @@ export class Video extends PureComponent {
             this.onWillPause();
         }
         return (
-            <video
-                className="player-video"
+            <StyledVideo
                 ref={VIDEO_REF}
                 src={data.src}
                 onPlay={onDidPlay}

@@ -39,15 +39,6 @@ module.exports = (env) => {
                     query: {
                         presets: ['es2016', 'es2015', 'react']
                     }
-                },
-                {
-                    test: /\.scss$/,
-                    loaders: [
-                        'style-loader',
-                        'css-loader?sourceMap',
-                        'sass-loader'
-                    ],
-                    include: `${__dirname}/src`
                 }
             ]
         }
