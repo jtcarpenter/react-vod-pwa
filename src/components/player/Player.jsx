@@ -8,16 +8,23 @@ import Video from
     'components/video/Video.jsx';
 import PlayerCtrls from 'components/playerCtrls/PlayerCtrls.jsx';
 import PlayerTitle from 'components/playerTitle/PlayerTitle.jsx';
+import {media} from 'helpers/styleHelper';
 
 const StyledDiv = styled.div`
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0 15px 0;
     position: absolute;
-    top: 70%;
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 95%;
-    margin: 0 2.5%;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 80%;
+    margin: 0 10%;
+    bottom: 30%;
+    ${media.PORTRAIT`
+        bottom: 50%;
+    `};
+    ${media.LANDSCAPE`
+        bottom: 10%;
+    `};
 `
 
 export function Player({

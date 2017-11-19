@@ -7,12 +7,27 @@ export const breakpoints = {
     XLARGE: 1080
 }
 
-export const media = Object.keys(breakpoints).reduce((accumulator, label) => {
-    const emSize = breakpoints[label] / 16
-    accumulator[label] = (...args) => css`
-        @media (min-width: ${emSize}em) {
-            ${css(...args)}
-        }
-    `
-    return accumulator
-}, {});
+export const media = Object.assign(
+    {},
+    Object.keys(breakpoints)
+        .reduce((accumulator, label) => {
+            const emSize = breakpoints[label] / 16
+            accumulator[label] = (...args) => css`
+                @media screen and (min-width: ${emSize}em) {
+                    ${css(...args)}
+                }
+            `
+            return accumulator
+        }, {}
+    ),
+    {
+        PORTRAIT: (...args) => css`
+            @media screen and (orientation: portrait){
+                ${css(...args)}
+            }`,
+        LANDSCAPE: (...args) => css`
+            @media screen and (orientation: landscape) {
+                ${css(...args)}
+            }`
+    }
+);

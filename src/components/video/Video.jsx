@@ -35,12 +35,18 @@ export class Video extends PureComponent {
             this.onWillPause();
         }
         return (
-            <StyledVideo
+            <video
                 ref={VIDEO_REF}
                 src={data.src}
+                preload="auto"
                 onPlay={onDidPlay}
                 onPause={onDidPause}
-            />
+                width="100%"
+            >
+                <source src={data.src} type="video/mp4"/>
+                <source src={data.src} type="video/webm"/>
+                <source src={data.src} type="video/ogg"/>
+            </video>
         )
     }
 }

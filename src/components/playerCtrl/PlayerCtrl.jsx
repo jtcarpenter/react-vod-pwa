@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {media} from 'helpers/styleHelper';
 
 export const PlayerCtrl = styled.button`
     font-family: 'icomoon' !important;
@@ -11,15 +12,35 @@ export const PlayerCtrl = styled.button`
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 3.5rem;
     margin-right: .5rem;
-    width: 3.6rem;
-    height: 3.5rem;
     padding: 0;
     display: inline-block;
     background-color: transparent;
     border-style: solid;
     border-width: 0;
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+    ${media.SMALL`
+        width: 2rem;
+        height: 2rem;
+        font-size: 2rem;
+    `};
+    ${media.MEDIUM`
+        width: 2rem;
+        height: 2rem;
+        font-size: 2rem;
+    `};
+    ${media.LARGE`
+        width: 3rem;
+        height: 3rem;
+        font-size: 3rem;
+    `};
+    ${media.XLARGE`
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 3.5rem;
+    `};
     border-color: ${(props) => {
         return props.borderColor
             ? props.borderColor
