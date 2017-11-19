@@ -4,17 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="./manifest.json">
-        <title>Hello world</title>
+        <title><%= NAME %></title>
     </head>
     <body>
         <div id="app"></div>
-        <script src="./bundle.js"></script>
         <script>
             if ('serviceWorker' in navigator) {
                 console.log("Will the service worker register?");
                 navigator.serviceWorker.register('service-worker.js')
                 .then(function(reg){
                     console.log("Yes, it did.");
+                    reg.sync.register('image-fetch').then(() => {
+                        console.log('Sync registered');
+                    });
+                    reg.periodicSync.register({
+                        tag: 'period-fetch',
+                        minPeriod: 0
+                    }).then(() => {
+                        console.log('periodicSync registered');
+                    });
                 }).catch(function(err) {
                     console.log("No it didn't. This happened: ", err)
                 });

@@ -1,16 +1,21 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
+const packageJson = require('./package.json');
 const PATHS = {
     app: path.join(__dirname, 'src/'),
-    public: path.join(__dirname, 'public')
+    public: path.join(__dirname, 'public'),
+    template: path.join(__dirname, 'index.html')
 };
 
-module.exports = (env) => {
+const config = (env) => {
     return {
         entry: {
             app: ['babel-polyfill', `${PATHS.app}/index.js`]
         },
         output: {
             path: PATHS.public,
+            publicPath: '/',
             filename: 'bundle.js'
         },
         resolve: {
@@ -41,6 +46,18 @@ module.exports = (env) => {
                     }
                 }
             ]
-        }
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                NAME: JSON.stringify(packageJson.name)
+            }),
+            new HtmlWebpackPlugin({
+                hash: true,
+                filename: 'index.html',
+                template: PATHS.template,
+            })
+        ]
     }
 }
+
+module.exports = config;
