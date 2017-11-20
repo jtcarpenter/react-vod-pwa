@@ -1,6 +1,14 @@
 {
-    "short_name": "react vod web",
-    "name": "React VOD Web",
+    "name": "React VOD PWA",
+    "short_name": "VOD PWA",
+    "start_url": "/?source=manifest",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "black",
+    "description": "A really simple demo video PWA",
+    "dir": "ltr",
+    "lang": "en-GB",
+    "theme_color": "#888888",
     "icons": [
         {
             "src": "icon96x96.png",
@@ -17,8 +25,5 @@
             "sizes": "192x192",
             "type": "image/png"
         }
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "orientation": "any"
+    ]
 }
