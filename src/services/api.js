@@ -9,14 +9,21 @@ const resolveUrl = (url, id) => {
 
 export const api = {
     episodes: {
-        get: (opts = {}) => fetch(resolveUrl(DATA_URL, opts.id))
-            .then((response) => {
-                if (response.status / 100 !== 2) {
-                    return {error: errorMessages.ERROR_CONTENT};
-                }
-                return response.json()
-                    .then((data) => data);
-            })
-            .catch((error) => ({error}))
+        get: (opts = {}) => {
+            return fetch(resolveUrl(DATA_URL, opts.id))
+                .then((response) => {
+                    if (response.status / 100 !== 2) {
+                        return {error: errorMessages.ERROR_CONTENT};
+                    }
+                    return response.json()
+                        .then((data) => data);
+                })
+                .catch((fetchError) => {
+                    return {
+                        fetchError,
+                        error: errorMessages.ERROR_CONTENT
+                    };
+                })
+        }
     }
 }

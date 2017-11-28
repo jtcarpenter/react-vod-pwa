@@ -8,8 +8,9 @@ export function *loaded(action) {
     const data = yield call(api.episodes.get, action.payload);
     if (data.error) {
         yield put(actions.failed(data));
+    } else {
+        yield put(actions.loaded(data));
     }
-    yield put(actions.loaded(data));
 }
 
 // Our watcher Saga: spawn a new loaded task on each LOAD

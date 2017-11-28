@@ -7,12 +7,15 @@ import {ThemeProvider, injectGlobal} from 'styled-components';
 import appStore from 'store/appStore';
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import ErrorBoundary from 'components/errorBoundary/ErrorBoundary.jsx';
+import AppShell from 'components/appShell/AppShell.jsx';
+import {registerSW} from 'helpers/serviceWorkerHelper';
 
 const theme = {
     PRIMARY: '#888888',
     PRIMARY_DARK: '#222222',
     PRIMARY_LIGHT: '#dddddd',
-    DIVIDER: '#666666'
+    DIVIDER: '#666666',
+    ERROR_COLOUR: '#ea5a5a'
 };
 
 injectGlobal([`
@@ -40,6 +43,8 @@ injectGlobal([`
     }
 `]);
 
+registerSW();
+
 ReactDOM.render(
     <ThemeProvider theme={theme}>
         <Provider store={appStore}>
@@ -49,7 +54,11 @@ ReactDOM.render(
                         <Route
                             exact
                             path="/"
-                            component={GridContainer}
+                            render={(props) =>
+                                <AppShell>
+                                    <GridContainer {...props}/>
+                                </AppShell>
+                            }
                         >
                         </Route>
                         <Route
