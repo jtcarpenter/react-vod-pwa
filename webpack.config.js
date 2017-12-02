@@ -84,10 +84,6 @@ const copyFiles = new CopyWebpackPlugin([
     {
         from: `${__dirname}/package.json`,
         to: `${PATHS.dist}/.`
-    },
-    {
-        from: `${PATHS.public}/service-worker.js`,
-        to: `${PATHS.dist}/.`
     }
 ]);
 
@@ -142,6 +138,22 @@ if (process.env.NODE_ENV === 'prod') {
             output: {
                 path: PATHS.dist,
                 filename: 'server.js'
+            },
+            module: {
+                loaders: [babelBackend]
+            },
+            target: 'node',
+            externals: [nodeExternals()]
+        },
+
+        // Service Worker config
+        {
+            entry: [
+                `${PATHS.public}/service-worker.js`
+            ],
+            output: {
+                path: PATHS.dist,
+                filename: 'service-worker.js'
             },
             module: {
                 loaders: [babelBackend]
