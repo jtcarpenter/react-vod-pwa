@@ -57,9 +57,9 @@ function generateItem(id) {
     const year = episodeDay.getFullYear();
     return {
         id,
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        src: 'https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
         title: `Bunnycast ${day} ${date} ${month} ${year}`,
-        thumb: 'http://lorempixel.com/275/165/'
+        thumb: 'https://lorempixel.com/275/165/'
     }
 }
 
