@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const WebpackStripLoader = require('strip-loader');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 const packageJson = require('./package.json');
 const PATHS = {
     app: path.join(__dirname, 'src/'),
@@ -25,12 +26,21 @@ const resolve = {
     ]
 };
 
-const babelLoader = {
+const babelFrontend = {
     test: /\.jsx?$/,
     include: PATHS.app,
     loader: 'babel-loader',
     query: {
         presets: ['es2016', 'es2015', 'react']
+    }
+}
+
+const babelBackend = {
+    test: /\.jsx?$/,
+    include: PATHS.public,
+    loader: 'babel-loader',
+    query: {
+        presets: ['es2016', 'es2015']
     }
 }
 
@@ -72,7 +82,7 @@ const copyFiles = new CopyWebpackPlugin([
         to: `${PATHS.dist}/.`
     },
     {
-        from: `${PATHS.public}/server.js`,
+        from: `${__dirname}/package.json`,
         to: `${PATHS.dist}/.`
     },
     {
@@ -98,28 +108,48 @@ const devServer = (env) => {
 
 if (process.env.NODE_ENV === 'prod') {
 
-    config = {
-        entry,
-        output: {
-            path: PATHS.dist,
-            publicPath: '/',
-            filename: 'bundle.js'
+    config = [
+
+        // Frontend config
+        {
+            entry,
+            output: {
+                path: PATHS.dist,
+                publicPath: '/',
+                filename: 'bundle.js'
+            },
+            resolve,
+            module: {
+                loaders: [babelFrontend, stripConsoleLog]
+            },
+            plugins: [
+                packageName,
+                cleanBuildDir,
+                copyFiles,
+                new HtmlWebpackPlugin({
+                    hash: false,
+                    filename: 'index.html',
+                    template: PATHS.template,
+                })
+            ]
         },
-        resolve,
-        module: {
-            loaders: [babelLoader, stripConsoleLog]
-        },
-        plugins: [
-            packageName,
-            cleanBuildDir,
-            copyFiles,
-            new HtmlWebpackPlugin({
-                hash: false,
-                filename: 'index.html',
-                template: PATHS.template,
-            })
-        ]
-    }
+
+        // Server config
+        {
+            entry: [
+                `${PATHS.public}/server.js`
+            ],
+            output: {
+                path: PATHS.dist,
+                filename: 'server.js'
+            },
+            module: {
+                loaders: [babelBackend]
+            },
+            target: 'node',
+            externals: [nodeExternals()]
+        }
+    ]
 
 } else {
 
@@ -135,7 +165,7 @@ if (process.env.NODE_ENV === 'prod') {
             devtool,
             devServer: devServer(env),
             module: {
-                loaders: [babelLoader]
+                loaders: [babelFrontend]
             },
             plugins: [
                 packageName,
