@@ -7,7 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const packageJson = require('./package.json');
 const PATHS = {
-    app: path.join(__dirname, 'src/'),
+    src: path.join(__dirname, 'src/'),
     public: path.join(__dirname, 'public'),
     dist: path.join(__dirname, 'dist'),
     template: path.join(__dirname, 'index.html')
@@ -16,7 +16,7 @@ const PATHS = {
 let config = null;
 
 const entry = {
-    app: ['babel-polyfill', `${PATHS.app}/index.js`]
+    app: ['babel-polyfill', `${PATHS.src}/index.js`]
 };
 
 const resolve = {
@@ -28,7 +28,7 @@ const resolve = {
 
 const babelFrontend = {
     test: /\.jsx?$/,
-    include: PATHS.app,
+    include: PATHS.src,
     loader: 'babel-loader',
     query: {
         presets: ['es2016', 'es2015', 'react']
@@ -36,8 +36,17 @@ const babelFrontend = {
 }
 
 const babelBackend = {
-    test: /\.jsx?$/,
+    test: /\.js$/,
     include: PATHS.public,
+    loader: 'babel-loader',
+    query: {
+        presets: ['es2016', 'es2015']
+    }
+}
+
+const babelServiceWorker = {
+    test: /\.js$/,
+    include: PATHS.src,
     loader: 'babel-loader',
     query: {
         presets: ['es2016', 'es2015']
@@ -46,7 +55,11 @@ const babelBackend = {
 
 const packageName = new webpack.DefinePlugin({
     NAME: JSON.stringify(packageJson.name)
-})
+});
+
+const packageVersion = new webpack.DefinePlugin({
+    VERSION: JSON.stringify(packageJson.version)
+});
 
 const stripConsoleLog = {
     test: [/\.js$/, /\.es6$/],
@@ -60,11 +73,14 @@ const cleanBuildDir = new CleanWebpackPlugin([PATHS.dist], {
     dry: false
 });
 
-const copyFiles = new CopyWebpackPlugin([
+const copyFonts = [
     {
         from: `${PATHS.public}/fonts`,
         to: `${PATHS.dist}/fonts`
-    },
+    }
+];
+
+const copyIcons = [
     {
         from: `${PATHS.public}/icon96x96.png`,
         to: `${PATHS.dist}/.`
@@ -76,16 +92,22 @@ const copyFiles = new CopyWebpackPlugin([
     {
         from: `${PATHS.public}/icon192x192.png`,
         to: `${PATHS.dist}/.`
-    },
+    }
+];
+
+const copyManifest = [
     {
         from: `${PATHS.public}/manifest.json`,
         to: `${PATHS.dist}/.`
-    },
+    }
+];
+
+const copyPackage = [
     {
         from: `${__dirname}/package.json`,
         to: `${PATHS.dist}/.`
     }
-]);
+];
 
 const devtool = 'eval-source-map';
 
@@ -112,7 +134,7 @@ if (process.env.NODE_ENV === 'prod') {
             output: {
                 path: PATHS.dist,
                 publicPath: '/',
-                filename: 'bundle.js'
+                filename: `bundle-${packageJson.version}.js`
             },
             resolve,
             module: {
@@ -120,8 +142,16 @@ if (process.env.NODE_ENV === 'prod') {
             },
             plugins: [
                 packageName,
+                packageVersion,
                 cleanBuildDir,
-                copyFiles,
+                new CopyWebpackPlugin(
+                    Array.prototype.concat(
+                        copyFonts,
+                        copyIcons,
+                        copyManifest,
+                        copyPackage
+                    )
+                ),
                 new HtmlWebpackPlugin({
                     hash: false,
                     filename: 'index.html',
@@ -140,7 +170,7 @@ if (process.env.NODE_ENV === 'prod') {
                 filename: 'server.js'
             },
             module: {
-                loaders: [babelBackend]
+                loaders: [babelBackend, stripConsoleLog]
             },
             target: 'node',
             externals: [nodeExternals()]
@@ -149,45 +179,65 @@ if (process.env.NODE_ENV === 'prod') {
         // Service Worker config
         {
             entry: [
-                `${PATHS.public}/service-worker.js`
+                `${PATHS.src}/service-worker.js`
             ],
             output: {
                 path: PATHS.dist,
                 filename: 'service-worker.js'
             },
             module: {
-                loaders: [babelBackend]
+                loaders: [babelServiceWorker, stripConsoleLog]
             },
-            target: 'node',
-            externals: [nodeExternals()]
+            plugins: [packageVersion]
         }
     ]
 
 } else {
 
     config = (env) => {
-        return {
-            entry,
-            output: {
-                path: PATHS.public,
-                publicPath: '/',
-                filename: 'bundle.js'
+        return [
+
+            // Frontend config
+            {
+                entry,
+                output: {
+                    path: PATHS.public,
+                    publicPath: '/',
+                    filename: `bundle-${packageJson.version}.js`
+                },
+                resolve,
+                devtool,
+                devServer: devServer(env),
+                module: {
+                    loaders: [babelFrontend]
+                },
+                plugins: [
+                    packageName,
+                    packageVersion,
+                    new HtmlWebpackPlugin({
+                        hash: true,
+                        filename: 'index.html',
+                        template: PATHS.template,
+                    })
+                ]
             },
-            resolve,
-            devtool,
-            devServer: devServer(env),
-            module: {
-                loaders: [babelFrontend]
-            },
-            plugins: [
-                packageName,
-                new HtmlWebpackPlugin({
-                    hash: true,
-                    filename: 'index.html',
-                    template: PATHS.template,
-                })
-            ]
-        }
+
+            // Service Worker config
+            {
+                entry: [
+                    `${PATHS.src}/service-worker.js`
+                ],
+                output: {
+                    path: PATHS.public,
+                    filename: 'service-worker.js'
+                },
+                module: {
+                    loaders: [babelServiceWorker]
+                },
+                plugins: [packageVersion]
+            }
+
+        ]
     }
 
 }

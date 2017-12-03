@@ -1,8 +1,7 @@
-const CACHE_VERSION = 1;
-const CACHE_NAME = `reat-vod-pwa-v${CACHE_VERSION}`;
+const CACHE_NAME = `reat-vod-pwa-${VERSION}`;
 const PRECACHE_FILES = [
     '/',
-    'bundle.js',
+    `bundle-${VERSION}.js`,
     'fonts/icomoon.eot',
     'fonts/icomoon.svg',
     'fonts/icomoon.ttf',
