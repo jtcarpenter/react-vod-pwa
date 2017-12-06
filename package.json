@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run apiServer | npm run webpackDevServer",
-    "webpackDevServer": "webpack-dev-server --history-api-fallback --env.PORT=3333 --env.API_PORT=8081",
+    "webpackDevServer": "webpack-dev-server -d --history-api-fallback --env.PORT=3333 --env.API_PORT=8081",
     "apiServer": "node public/server.js PORT=8081",
     "deploy": "NODE_ENV=prod webpack -p",
     "test": "jest",

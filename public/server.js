@@ -55,11 +55,16 @@ function generateItem(id) {
     const date = cardinalToOrdinal(episodeDay.getDate());
     const month = MONTHS[episodeDay.getMonth()];
     const year = episodeDay.getFullYear();
+    const thumbDateQuery = `\
+        ${episodeDay.getFullYear()}-\
+        ${episodeDay.getMonth()}-\
+        ${episodeDay.getDate()}\
+        ${episodeDay.getTime()}`;
     return {
         id,
         src: 'https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
         title: `Bunnycast ${day} ${date} ${month} ${year}`,
-        thumb: 'https://lorempixel.com/275/165/'
+        thumb: `https://lorempixel.com/275/165/?${thumbDateQuery}`
     }
 }
 
