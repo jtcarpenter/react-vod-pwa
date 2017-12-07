@@ -82,15 +82,19 @@ const copyFonts = [
 
 const copyIcons = [
     {
-        from: `${PATHS.public}/icon96x96.png`,
+        from: `${PATHS.public}/icon-192x192.png`,
         to: `${PATHS.dist}/.`
     },
     {
-        from: `${PATHS.public}/icon144x144.png`,
+        from: `${PATHS.public}/icon-256x256.png`,
         to: `${PATHS.dist}/.`
     },
     {
-        from: `${PATHS.public}/icon192x192.png`,
+        from: `${PATHS.public}/icon-384x384.png`,
+        to: `${PATHS.dist}/.`
+    },
+    {
+        from: `${PATHS.public}/icon-512x512.png`,
         to: `${PATHS.dist}/.`
     }
 ];
