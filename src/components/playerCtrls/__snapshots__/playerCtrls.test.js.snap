@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerCtrls should display correctly 1`] = `
+<div
+  className="sc-bdVaJa kmXoBq"
+/>
+`;

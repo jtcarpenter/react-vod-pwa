@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayButton should display correctly 1`] = `
+<button
+  className="sc-bdVaJa cYyHzu"
+  icon="\\\\ea15"
+  onClick={[Function]}
+  type="button"
+/>
+`;

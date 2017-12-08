@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackButton should display correctly 1`] = `
+<button
+  className="sc-bdVaJa cUeAZT"
+  icon="\\\\ea40"
+  onClick={undefined}
+  type="button"
+/>
+`;
