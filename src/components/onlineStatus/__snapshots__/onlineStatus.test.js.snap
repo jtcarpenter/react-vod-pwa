@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OnlineStatus should display correctly 1`] = `
+<div
+  className="sc-bdVaJa cJRoez"
+>
+  <p
+    className="sc-bwzfXH aQnIu"
+  >
+    You are offline
+  </p>
+</div>
+`;

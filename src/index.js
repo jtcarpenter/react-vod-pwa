@@ -9,6 +9,8 @@ import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import ErrorBoundary from 'components/errorBoundary/ErrorBoundary.jsx';
 import AppShell from 'components/appShell/AppShell.jsx';
 import {registerSW} from 'helpers/serviceWorkerHelper';
+import OnlineStatus from
+    'containers/onlineStatusContainer/OnlineStatusContainer.jsx';
 
 const theme = {
     PRIMARY: '#888888',
@@ -69,6 +71,7 @@ ReactDOM.render(
                         </Route>
                     </Switch>
                 </BrowserRouter>
+                <OnlineStatus></OnlineStatus>
             </ErrorBoundary>
         </Provider>
     </ThemeProvider>,
